@@ -1,0 +1,30 @@
+{
+  "name": "ut-permission",
+  "version": "5.0.0",
+  "description": "UT authorization module",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.softwaregroup-bg.com:ut5/ut-permission.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "chai-as-promised": "^5.0.0",
+    "mocha": "^2.2.4"
+  },
+  "publishConfig": {
+    "registry": "http://npm.softwaregroup-bg.com:5001"
+  },
+  "dependencies": {
+    "errno": "^0.1.2",
+    "when": "^3.7.2"
+  }
+}
