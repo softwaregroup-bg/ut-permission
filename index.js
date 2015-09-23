@@ -21,17 +21,13 @@ module.exports = function(templates) {
 
     function checkPermission(session, method){
         if(session.permissions.indexOf(method) !== -1){
-            return when.resolve({
-                session: session.permissions
-            });
+            return when.resolve(session.permissions);
         } else {
-            return when.resolve({
-                error: {
-                    code: 403,
-                    message: "Access is denied. You do not have permission to perform the requested operation.",
-                    errorPrint: "Access is denied. You do not have permission to perform the requested operation.",
-                },
-                session: session.permissions
+            return when.reject({
+                code: 403,
+                message: "Access is denied. You do not have permission to perform the requested operation.",
+                errorPrint: "Access is denied. You do not have permission to perform the requested operation.",
+                permissions: session.permissions
             });
         }
     }
