@@ -1,0 +1,11 @@
+declare @userId int
+set @userId = ${params.userId}
+
+SELECT DISTINCT rs.Name +'.'+ o.Name AS "code"
+    FROM userManagement.UserRole AS ur
+    JOIN userManagement.[Role] AS r ON r.ID = ur.RoleID
+    JOIN userManagement.RolePermission AS rp ON rp.RoleID = r.ID AND rp.IsDeleted = 0
+    JOIN userManagement.Permission AS p ON p.ID = rp.PermissionID
+    JOIN userManagement.[Resource] AS rs ON rs.ID = p.ResourceID
+    JOIN userManagement.Operation AS o ON o.ID = p.OperationID
+WHERE ur.UserID = @userId
