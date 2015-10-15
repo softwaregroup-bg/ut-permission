@@ -1,6 +1,9 @@
 declare @userId int
 set @userId = ${params.userId}
 
+declare @name nvarchar(50)
+set @name = ${params.name}
+
 SELECT DISTINCT rs.Name +'.'+ o.Name AS "code"
     FROM userManagement.UserRole AS ur
     JOIN userManagement.[Role] AS r ON r.ID = ur.RoleID
