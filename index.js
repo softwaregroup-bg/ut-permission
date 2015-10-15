@@ -19,15 +19,15 @@ module.exports = function(templates) {
         return getParams(params);
     }
 
-    function checkPermission(session, method){
-        if(session.permissions.indexOf(method) !== -1){
-            return when.resolve(session.permissions);
+    function checkPermission(permissions, method){
+        if(Array.isArray(permissions) && permissions.indexOf(method) !== -1){
+            return when.resolve(permissions);
         } else {
             return when.reject({
                 code: 403,
                 message: "Access is denied. You do not have permission to perform the requested operation.",
                 errorPrint: "Access is denied. You do not have permission to perform the requested operation.",
-                permissions: session.permissions
+                permissions: permissions
             });
         }
     }
@@ -46,27 +46,35 @@ module.exports = function(templates) {
             });
     }
 
+    function getPermissions(session) {
+        if(session && session.permissions ){
+            return when.resolve(session.permissions);
+        } else if(session) {
+            return loadPermission.call(this, session, { userId: session.userId })
+                .then(function(session){
+                    return when.resolve(session.permissions);
+                });
+        } else if(!session && this.config && this.config.permission && this.config.permission.requireSession) {
+            return when.reject({
+                code: 401,
+                message: "There is no active session.",
+                errorPrint: "There is no active session."
+            });
+        } else {
+            return loadPermission.call(this, session, { name: "anonymous" })
+                .then(function(session){
+                    return when.resolve(session.permissions);
+                });
+        }
+    }
+
     return {
         check:function(session, method){
-            if(session && session.permissions ){
-                return checkPermission(session, method);
-            } else if(session) {
-                return loadPermission.call(this, session, { userId: session.userId })
-                    .then(function(session){
-                        return checkPermission(session, method)
-                    });
-            } else if(!session && this.config && this.config.permission && this.config.permission.requireSession) {
-                return when.reject({
-                    code: 401,
-                    message: "There is no active session.",
-                    errorPrint: "There is no active session."
+            return getPermissions.call(this, session)
+                .then(function(permissions){
+                    return checkPermission(permissions, method);
                 });
-            } else {
-                return loadPermission.call(this, session, { name: "anonymous" })
-                    .then(function(session){
-                        return checkPermission(session, method)
-                    });
-            }
-        }
+        },
+        getPermissions: getPermissions
     };
 };
