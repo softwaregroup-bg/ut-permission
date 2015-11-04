@@ -19,7 +19,7 @@ module.exports = function(templates) {
         return getParams(params);
     }
 
-    function getPermissions (session, $meta) {
+    function getPermissions (session) {
         if(session && session.permissions ){
             return when.resolve(session.permissions);
         } else if(session) {
@@ -54,9 +54,9 @@ module.exports = function(templates) {
     }
 
     return {
-        check: function(method, $meta){
-            var session = $meta.session;
-            return getPermissions.call(this, session, $meta)
+        check: function(session, method){
+            session = session && session.$$ ? session.$$.session : session;
+            return getPermissions.call(this, session)
                 .then(function(permissions){
                     if(!method) {
                         return when.resolve(permissions);
