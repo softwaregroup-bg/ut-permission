@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "errno": "^0.1.2",
+    "marko": "^2.7.28",
     "when": "^3.7.2"
   }
 }
