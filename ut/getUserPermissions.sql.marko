@@ -11,4 +11,4 @@ SELECT DISTINCT rs.Name +'.'+ o.Name AS "code"
     JOIN userManagement.Permission AS p ON p.ID = rp.PermissionID
     JOIN userManagement.[Resource] AS rs ON rs.ID = p.ResourceID
     JOIN userManagement.Operation AS o ON o.ID = p.OperationID
-WHERE ur.UserID = @userId
+WHERE ur.UserID = @userId and ur.[IsDeleted] = 0
