@@ -1,6 +1,6 @@
 {
   "name": "ut-permission",
-  "version": "5.0.0",
+  "version": "5.2.1",
   "description": "UT authorization module",
   "main": "index.js",
   "directories": {
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "errno": "^0.1.2",
+    "marko": "^2.7.28",
     "when": "^3.7.2"
   }
 }
