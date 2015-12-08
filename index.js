@@ -56,11 +56,14 @@ module.exports = function(templates) {
     return {
         check: function(method, $meta) {
             var session = $meta.session;
+            if (typeof method !== 'string') {
+                method = $meta.method;
+            }
             return getPermissions.call(this, session, $meta)
                 .then(function(permissions) {
                     if (!method) {
                         return when.resolve(permissions);
-                    } else if (Array.isArray(permissions) && permissions.indexOf(method) !== -1) {
+                    } else if ((Array.isArray(permissions) && permissions.indexOf(method) !== -1) || method === 'permission.check') {
                         return when.resolve(permissions);
                     } else {
                         return when.reject({
