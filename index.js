@@ -42,6 +42,7 @@ module.exports = function(templates) {
         } else {
             return this.execTemplateRows(templates.getUserPermissions, getParams.call(this, {name: 'anonymous'}), true)
                 .then(function(result) {
+					session = session || {};
                     session.permissions = [];
                     for (var n = 0, len = result.length; n < len; n++) {
                         if (result[n].code) {
