@@ -1,20 +1,21 @@
 'use strict';
 var utTemplate = require('ut-template');
-var _ = require('lodash');
+var assign = require('lodash/object/assign');
+var defaults = require('lodash/object/defaults');
 var when = require('when');
 
 module.exports = function(templates) {
-    templates = _.assign({
+    templates = assign({
         getUserPermissions: utTemplate.load(require.resolve('./ut/getUserPermissions.sql.marko'))
     }, templates || {});
 
     function getParams(params) {
-        var config = _.assign({ // merge only once
+        var config = assign({ // merge only once
 
         }, (this.config && this.config.permission) || {});
         var getParamsReturn = function(params) { // lazy initialization
             params.random = Math.random().toString(36).substring(5).toUpperCase();
-            return _.defaults(params, config);
+            return defaults(params, config);
         };
         return getParamsReturn(params);
     }
