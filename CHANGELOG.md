@@ -1,3 +1,13 @@
+<a name="5.3.5"></a>
+## [5.3.5](https://git.softwaregroup-bg.com/ut5/ut-permission/compare/v5.3.4...v5.3.5) (2016-04-13)
+
+
+### Features
+
+* **get:** for ut-user ([82b0bb3](https://git.softwaregroup-bg.com/ut5/ut-permission/commit/82b0bb3))
+
+
+
 <a name="5.3.4"></a>
 ## [5.3.4](https://git.softwaregroup-bg.com/ut5/ut-permission/compare/v5.3.3...v5.3.4) (2016-04-05)
 
