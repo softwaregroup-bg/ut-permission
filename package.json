@@ -30,7 +30,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "ut-tools": "^5.3.1"
+    "ut-tools": "^5.3.10"
   },
   "publishConfig": {
     "registry": "https://nexus.softwaregroup-bg.com/repository/npm-internal"
