@@ -21,7 +21,9 @@
     "pretest": "ut-pretest",
     "preversion": "ut-preversion",
     "test": "ut-test",
-    "version": "ut-version"
+    "version": "ut-version",
+    "jenkins": "ut-jenkins",
+    "gitlab": "ut-gitlab"
   },
   "repository": {
     "type": "git",
@@ -30,7 +32,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "ut-tools": "^5.3.10"
+    "ut-tools": "^5.3.13"
   },
   "publishConfig": {
     "registry": "https://nexus.softwaregroup-bg.com/repository/npm-internal"
