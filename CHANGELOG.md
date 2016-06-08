@@ -1,3 +1,13 @@
+<a name="5.3.7"></a>
+## [5.3.7](https://git.softwaregroup-bg.com/ut5/ut-permission/compare/v5.3.6...v5.3.7) (2016-06-08)
+
+
+### Bug Fixes
+
+* upgrade lodash ([61436b2](https://git.softwaregroup-bg.com/ut5/ut-permission/commit/61436b2))
+
+
+
 <a name="5.3.6"></a>
 ## [5.3.6](https://git.softwaregroup-bg.com/ut5/ut-permission/compare/v5.3.5...v5.3.6) (2016-04-15)
 

@@ -1,6 +1,6 @@
 {
   "name": "ut-permission",
-  "version": "5.3.6",
+  "version": "5.3.7",
   "description": "UT authorization module",
   "main": "index.js",
   "directories": {
