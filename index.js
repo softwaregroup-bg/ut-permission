@@ -1,7 +1,7 @@
 'use strict';
 var utTemplate = require('ut-template');
-var assign = require('lodash/object/assign');
-var defaults = require('lodash/object/defaults');
+var assign = require('lodash.assign');
+var defaults = require('lodash.defaults');
 var when = require('when');
 
 module.exports = function(templates) {
