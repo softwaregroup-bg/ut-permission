@@ -1,6 +1,6 @@
 {
   "name": "ut-permission",
-  "version": "5.3.7",
+  "version": "5.4.0",
   "description": "UT authorization module",
   "main": "index.js",
   "directories": {
@@ -32,13 +32,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "ut-tools": "^5.3.13"
+    "ut-tools": "^5.4.1"
   },
   "publishConfig": {
     "registry": "https://nexus.softwaregroup-bg.com/repository/npm-internal"
   },
   "peerDependencies": {
-    "ut-template": "~5.3.5"
+    "ut-template": "~5.4.1"
   },
   "dependencies": {
     "lodash.assign": "4.0.9",
