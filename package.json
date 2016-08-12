@@ -27,15 +27,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.softwaregroup-bg.com:ut5/ut-permission.git"
+    "url": "git@github.com:softwaregroup-bg/ut-permission.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "devDependencies": {
-    "ut-tools": "^5.4.1"
-  },
-  "publishConfig": {
-    "registry": "https://nexus.softwaregroup-bg.com/repository/npm-internal"
+    "ut-tools": "^5.6.0"
   },
   "peerDependencies": {
     "ut-template": "~5.4.1"
