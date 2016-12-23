@@ -1,3 +1,13 @@
+<a name="5.5.0"></a>
+# [5.5.0](https://github.com/softwaregroup-bg/ut-permission/compare/v5.4.5...v5.5.0) (2016-12-23)
+
+
+### Features
+
+* update dependencies ([71157d1](https://github.com/softwaregroup-bg/ut-permission/commit/71157d1))
+
+
+
 <a name="5.4.5"></a>
 ## [5.4.5](https://github.com/softwaregroup-bg/ut-permission/compare/v5.4.4...v5.4.5) (2016-11-02)
 
