@@ -1,3 +1,13 @@
+<a name="5.5.1"></a>
+## [5.5.1](https://github.com/softwaregroup-bg/ut-permission/compare/v5.5.0...v5.5.1) (2017-03-09)
+
+
+### Bug Fixes
+
+* dependencies ([eb32cb7](https://github.com/softwaregroup-bg/ut-permission/commit/eb32cb7))
+
+
+
 <a name="5.5.0"></a>
 # [5.5.0](https://github.com/softwaregroup-bg/ut-permission/compare/v5.4.5...v5.5.0) (2016-12-23)
 
