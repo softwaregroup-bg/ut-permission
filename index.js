@@ -2,11 +2,11 @@
 var utTemplate = require('ut-template');
 var assign = require('lodash.assign');
 var defaults = require('lodash.defaults');
-var when = require('when');
+var path = require('path');
 
 module.exports = function(templates) {
     templates = assign({
-        getUserPermissions: utTemplate.load(require.resolve('./ut/getUserPermissions.sql.marko'))
+        getUserPermissions: utTemplate.load(path.join(__dirname, '/ut/getUserPermissions.sql.marko'))
     }, templates || {});
 
     function getParams(params) {
@@ -22,7 +22,7 @@ module.exports = function(templates) {
 
     function getPermissions(session, $meta) {
         if (session && session.permissions) {
-            return when.resolve(session.permissions);
+            return Promise.resolve(session.permissions);
         } else if (session) {
             return this.execTemplateRows(templates.getUserPermissions, getParams.call(this, {userId: session.userId}), true)
                 .then(function(result) {
@@ -32,14 +32,15 @@ module.exports = function(templates) {
                             session.permissions.push(result[n].code);
                         }
                     }
-                    return when.resolve(session.permissions);
+                    return Promise.resolve(session.permissions);
                 });
         } else if (!session && this.config && this.config.permission && this.config.permission.requireSession) {
-            return when.reject({
+            var e = new Error('There is no active session.');
+            Object.assign(e, {
                 code: 401,
-                message: 'There is no active session.',
                 errorPrint: 'There is no active session.'
             });
+            return Promise.reject(e);
         } else {
             return this.execTemplateRows(templates.getUserPermissions, getParams.call(this, {name: 'anonymous'}), true)
                 .then(function(result) {
@@ -50,7 +51,7 @@ module.exports = function(templates) {
                             session.permissions.push(result[n].code);
                         }
                     }
-                    return when.resolve(session.permissions);
+                    return Promise.resolve(session.permissions);
                 });
         }
     }
@@ -64,16 +65,17 @@ module.exports = function(templates) {
             return getPermissions.call(this, session, $meta)
                 .then(function(permissions) {
                     if (!method) {
-                        return when.resolve(permissions);
+                        return Promise.resolve(permissions);
                     } else if ((Array.isArray(permissions) && permissions.indexOf(method) !== -1) || method === 'permission.check') {
-                        return when.resolve(permissions);
+                        return Promise.resolve(permissions);
                     } else {
-                        return when.reject({
+                        var e = new Error('Access is denied. You do not have permission to perform the requested operation.');
+                        Object.assign(e, {
                             code: 403,
-                            message: 'Access is denied. You do not have permission to perform the requested operation.',
                             errorPrint: 'Access is denied. You do not have permission to perform the requested operation.',
                             permissions: permissions
                         });
+                        return Promise.reject(e);
                     }
                 });
         },

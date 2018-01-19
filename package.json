@@ -37,7 +37,6 @@
   "dependencies": {
     "ut-template": "^5.5.0",
     "lodash.assign": "4.2.0",
-    "lodash.defaults": "4.2.0",
-    "when": "3.7.7"
+    "lodash.defaults": "4.2.0"
   }
 }
